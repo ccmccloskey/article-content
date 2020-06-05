@@ -1,0 +1,12 @@
+{
+    "cli": {
+        "html": true,
+        "json": true,
+        "path": "issues/{issue_no}/data"
+    },
+    "test": {
+        "html": true,
+        "json": true,
+        "path": "tests/data"
+    }
+}
