@@ -1,13 +1,20 @@
 import csv
 import datetime as dt
-import json
-from random import randint
+import time
 
 import GetOldTweets3 as got
-import pandas as pd
+import argparse
+
+parser = argparse.ArgumentParser(description="Run Dump Data Script")
+parser.add_argument(
+    "--search", type=str, help="the search query given for twitter /search"
+)
+parser.add_argument(
+    "--outfile", type=str, help="the absolute path to the file to output the data to"
+)
 
 # look at last 2 months
-start_date = dt.datetime(2020, 5, 22, 0, 0, 0)
+start_date = dt.datetime(2020, 5, 31, 0, 0, 0)
 end_date = dt.datetime(2020, 5, 31, 0, 0, 0)
 
 
@@ -20,19 +27,12 @@ class Location:
 
 # compare capital cities
 london = Location("London-GEO", "51.53, -0.38", "20km")
-seoul = Location("Seoul-GEO", "37.57, 126.85", "15km")
 nyc = Location("NYC-GEO", "40.70, -74.26", "20km")
 
 
-def get_all_data_for_query_search(start_date, end_date, search, locations):
-    import time
-    import os
+def get_all_data_for_query_search(start_date, end_date, search, locations, out):
 
-    os.chdir("/Users/ciaranmccloskey/Documents/projects/open-source/001/twitter")
-
-    locations_str = "-".join([l.name for l in locations])
-
-    with open(f"{search}-{locations_str}.csv", "w", newline="") as csvfile:
+    with open(out, "w", newline="") as csvfile:
         csv_writer = csv.writer(csvfile, lineterminator="\n")
         csv_writer.writerow(
             [
@@ -73,7 +73,7 @@ def get_all_data_for_query_search(start_date, end_date, search, locations):
                 tweet_criteria = (
                     criteria_with_location.setSince(since)
                     .setUntil(until)
-                    .setMaxTweets(2000)
+                    .setMaxTweets(max_tweets)
                 )
                 tweets = got.manager.TweetManager.getTweets(tweet_criteria)
 
@@ -106,11 +106,9 @@ def get_all_data_for_query_search(start_date, end_date, search, locations):
 
                 print(f"{time_now} seconds have elapsed")
 
-                # try to circumvent rate limiting
-                # time.sleep(randint(4, 7))
-
-
-search = ""
 
 if __name__ == "__main__":
-    get_all_data_for_query_search(start_date, end_date, search, [nyc])
+    args = parser.parse_args()
+    search = args.search
+    out = args.outfile
+    get_all_data_for_query_search(start_date, end_date, search, [london, nyc], out)

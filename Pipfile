@@ -9,11 +9,10 @@ black = "*"
 pytest = "*"
 
 [packages]
-jupyter = "*"
-searchtweets = "*"
 GetOldTweets3 = "*"
 pandas = "*"
 plotly = "*"
+# remember to add sentiment analysis package here
 
 [requires]
 python_version = "3.7"

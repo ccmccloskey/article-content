@@ -1,8 +1,10 @@
 # from pandarallel import pandarallel
 import ast
 import calendar
+
 # import nltk
 import csv
+
 # from textblob import TextBlob
 # from googletrans import Translator
 import datetime as dt
@@ -30,7 +32,7 @@ from pytz import timezone
 # nltk.download('punkt')
 # pandarallel.initialize()
 
-# from twitter.sentiment.sentiment import SentimentAnalysis, NotSupportLanguageError
+# from twitter.sentiment.sentiment import SentimentAnalysis
 
 os.chdir("/Users/ciaranmccloskey/Documents/projects/open-source/issues/i001/scripting")
 # df = pd.read_csv('no-search.csv', parse_dates=['date'],
