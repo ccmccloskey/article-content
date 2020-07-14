@@ -519,7 +519,7 @@ class BaseTimeSeriesChart:
                     xanchor="center",
                     yanchor="bottom",
                     yshift=5,
-                    text=event.display_text,
+                    text=self.boldify_text(event.display_text),
                     font=dict(family="Roboto", size=14, color=color),
                     showarrow=False,
                 ),

@@ -4,6 +4,8 @@ import webbrowser
 from abc import ABC, abstractmethod
 from enum import Enum
 from functools import partial
+import datetime
+import jsonplus as json
 
 
 class RunMode(Enum):
@@ -16,10 +18,10 @@ class GetChart(ABC):
         self.issue_no = issue_no
         self.chart_id = chart_id
         self.run_mode = run_mode
-        with open(f"issues/{issue_no}/data/presentation_layer.json") as f:
-            self.data = json.load(f)[chart_id]
+        with open(f"issues/{issue_no}/data/pl-{chart_id}.json") as f:
+            self.data = json.loads(f.read())
         with open("charting/persisted_data_config.json") as f:
-            self.config = json.load(f)
+            self.config = json.loads(f.read())
         self.persist_html = self.config[run_mode]["html"]
         self.persist_json = self.config[run_mode]["json"]
         self.persist_path = os.path.realpath(
