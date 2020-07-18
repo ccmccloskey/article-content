@@ -421,17 +421,18 @@ class BaseTimeSeriesChart:
                 )
             )
 
-    def update_layout(self):
-        self.fig.update_layout(
-            xaxis=self.xaxis,
-            yaxis=self.yaxis,
-            title=self.title,
-            showlegend=self.showlegend,
-            plot_bgcolor=self.plot_bgcolor,
-            titlefont=self.titlefont,
-            annotations=self.annotations,
-            shapes=self.shapes,
-        )
+    def update_layout(self, **kwargs):
+        set_values = {
+            "xaxis": self.xaxis,
+            "yaxis": self.yaxis,
+            "title": self.title,
+            "showlegend": self.showlegend,
+            "plot_bgcolor": self.plot_bgcolor,
+            "titlefont": self.titlefont,
+            "annotations": self.annotations,
+            "shapes": self.shapes,
+        }
+        self.fig.update_layout(dict(set_values, **kwargs))
 
     def update_xaxis_configuration(self, **params):
         for key, value in params.items():
