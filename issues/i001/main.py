@@ -1,5 +1,11 @@
-from charting.charting import (BaseTimeSeriesChart, SentimentColorPalette,
-                               SentimentHorizontalBarChartWithComment, ColorPaletteTransformer, DarkSentimentColorPalette, TimeSeriesEvent)
+from charting.charting import (
+    BaseTimeSeriesChart,
+    SentimentColorPalette,
+    SentimentHorizontalBarChartWithComment,
+    ColorPaletteTransformer,
+    DarkSentimentColorPalette,
+    TimeSeriesEvent,
+)
 from charting.utils import GetChart
 import numpy as np
 import datetime as dt
@@ -17,7 +23,7 @@ class GetHBA(GetChart):
             ),
             None,
             None,
-            *self.data["data_series"]
+            *self.data["data_series"],
         )
         self.chart.create_figure()
         self.chart.append_comments_to_annotations(*self.data["commments"])
@@ -32,10 +38,11 @@ class GetHBB(GetChart):
     def __init__(self, run_mode):
         super().__init__("i001", "hb-b", run_mode)
         self.colors = ColorPaletteTransformer(
-            SentimentColorPalette, color_name_order=['negative', 'neutral', 'positive'])
-        self.colors.darken_colors('negative')
-        self.colors.dim_colors('positive', 'neutral')
-        self.colors.create_continuous_scale_for_color('negative', 5, 0.2)
+            SentimentColorPalette, color_name_order=["negative", "neutral", "positive"]
+        )
+        self.colors.darken_colors("negative")
+        self.colors.dim_colors("positive", "neutral")
+        self.colors.create_continuous_scale_for_color("negative", 5, 0.2)
         self.colors.create_value_list()
 
     def build_chart(self):
@@ -44,7 +51,7 @@ class GetHBB(GetChart):
             self.colors.value_list,
             None,
             None,
-            *self.data["data_series"]
+            *self.data["data_series"],
         )
         self.chart.create_figure()
         self.chart.append_comments_to_annotations(*self.data["commments"])
@@ -57,7 +64,7 @@ class GetHBB(GetChart):
 
 class GetTSA(GetChart):
     def __init__(self, run_mode):
-            super().__init__("i001", "ts-a", run_mode)
+        super().__init__("i001", "ts-a", run_mode)
 
     def build_chart(self):
         self.chart = BaseTimeSeriesChart(
@@ -70,8 +77,7 @@ class GetTSA(GetChart):
         )
         self.chart.create_figure()
         self.chart.update_yaxis_configuration(
-            tickvals=np.arange(0, 1, 0.01),
-            hoverformat=",.1%",
+            tickvals=np.arange(0, 1, 0.01), hoverformat=",.1%",
         )
         self.chart.create_date_axis_configuration()
         self.chart.update_layout()
@@ -80,11 +86,13 @@ class GetTSA(GetChart):
 
 class GetTSB(GetChart):
     def __init__(self, run_mode):
-            super().__init__("i001", "ts-b", run_mode)
-            self.colors = ColorPaletteTransformer(
-                DarkSentimentColorPalette, color_name_order=["negative", "neutral", "positive"])
-            self.colors.dim_colors("negative")
-            self.colors.create_value_list()
+        super().__init__("i001", "ts-b", run_mode)
+        self.colors = ColorPaletteTransformer(
+            DarkSentimentColorPalette,
+            color_name_order=["negative", "neutral", "positive"],
+        )
+        self.colors.dim_colors("negative")
+        self.colors.create_value_list()
 
     def build_chart(self):
         self.chart = BaseTimeSeriesChart(
@@ -97,14 +105,32 @@ class GetTSB(GetChart):
         )
         self.chart.create_figure()
         self.chart.update_yaxis_configuration(
-            tickvals=np.arange(0, 1, 0.01),
-            hoverformat=",.1%",
+            tickvals=np.arange(0, 1, 0.01), hoverformat=",.1%",
         )
         self.chart.create_date_axis_configuration()
         self.chart.update_layout()
         self.chart.add_events_to_timeseries_plot(
             DarkSentimentColorPalette.negative.value,
-            TimeSeriesEvent(dt.datetime(2020, 3, 11), self.data["data_series"][0]["y"][self.data["dates"].index(dt.date(2020, 3, 11))], 'WHO declares the coronavirus outbreak a pandemic'),
-            TimeSeriesEvent(dt.datetime(2020, 3, 22), self.data["data_series"][0]["y"][self.data["dates"].index(dt.date(2020, 3, 22))], 'NYC Lockdown Begins'),
-            TimeSeriesEvent(dt.datetime(2020, 3, 23), self.data["data_series"][0]["y"][self.data["dates"].index(dt.date(2020, 3, 23))], 'London (UK) Lockdown Begins'))
+            TimeSeriesEvent(
+                dt.datetime(2020, 3, 11),
+                self.data["data_series"][0]["y"][
+                    self.data["dates"].index(dt.date(2020, 3, 11))
+                ],
+                "WHO declares the coronavirus outbreak a pandemic",
+            ),
+            TimeSeriesEvent(
+                dt.datetime(2020, 3, 22),
+                self.data["data_series"][0]["y"][
+                    self.data["dates"].index(dt.date(2020, 3, 22))
+                ],
+                "NYC Lockdown Begins",
+            ),
+            TimeSeriesEvent(
+                dt.datetime(2020, 3, 23),
+                self.data["data_series"][0]["y"][
+                    self.data["dates"].index(dt.date(2020, 3, 23))
+                ],
+                "London (UK) Lockdown Begins",
+            ),
+        )
         self.chart.show_figure()

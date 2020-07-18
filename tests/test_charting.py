@@ -6,11 +6,15 @@ import pytest
 from issues.i001 import main
 
 
-@pytest.mark.parametrize("issue_no,chart_id,fn", [
-    ("i001", "hb-a", main.GetHBA),
-    ("i001", "hb-b", main.GetHBB),
-    ("i001", "ts-a", main.GetTSA),
-    ("i001", "ts-b", main.GetTSB)])
+@pytest.mark.parametrize(
+    "issue_no,chart_id,fn",
+    [
+        ("i001", "hb-a", main.GetHBA),
+        ("i001", "hb-b", main.GetHBB),
+        ("i001", "ts-a", main.GetTSA),
+        ("i001", "ts-b", main.GetTSB),
+    ],
+)
 def test_get_chart(issue_no, chart_id, fn):
     """runs use case, asserts json 
 
