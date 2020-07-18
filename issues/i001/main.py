@@ -108,6 +108,3 @@ class GetTSB(GetChart):
             TimeSeriesEvent(dt.datetime(2020, 3, 22), self.data["data_series"][0]["y"][self.data["dates"].index(dt.date(2020, 3, 22))], 'NYC Lockdown Begins'),
             TimeSeriesEvent(dt.datetime(2020, 3, 23), self.data["data_series"][0]["y"][self.data["dates"].index(dt.date(2020, 3, 23))], 'London (UK) Lockdown Begins'))
         self.chart.show_figure()
-
-chart_builder = GetTSB(run_mode="cli")
-chart_builder.build_chart()
