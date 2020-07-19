@@ -14,7 +14,7 @@ parser.add_argument(
 )
 
 # look at last 2 months
-start_date = dt.datetime(2020, 5, 31, 0, 0, 0)
+start_date = dt.datetime(2020, 2, 8, 0, 0, 0)
 end_date = dt.datetime(2020, 5, 31, 0, 0, 0)
 
 

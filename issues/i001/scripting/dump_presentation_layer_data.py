@@ -104,23 +104,6 @@ class DumpPresentationLayer:
                 e
             ].sum(axis=1)
 
-        # self.df['factor'] = self.df.apply(get_factor, columns=list(emotion_types_to_emotions.keys()), axis=1)
-        # self.df_covid_related_terms['factor'] = self.df_covid_related_terms.apply(get_factor, columns=list(emotion_types_to_emotions.keys()), axis=1)
-
-        # import pdb; pdb.set_trace()
-        # for emotion_type in emotion_types_to_emotions.keys():
-        #    self.df[e] = self.df['factor'] * self.df[e]
-        #    self.df_covid_related_terms[e] = self.df_covid_related_terms['factor'] * self.df_covid_related_terms[e]
-
-    def get_emotions_values(self):
-        # self.df['factor'] = self.df.apply(get_factor, columns=emotions, axis=1)
-        # self.df_covid_related_terms['factor'] = self.df_covid_related_terms.apply(get_factor, columns=emotions, axis=1)
-        #
-        # for e in emotions:
-        #    self.df[e] = self.df['factor'] * self.df[e]
-        #    self.df_covid_related_terms[e] = self.df_covid_related_terms['factor'] * self.df_covid_related_terms[e]
-        pass
-
     def get_mean_emotions_values(self):
         self.emotions_values = apply_rescaling_to_100(self.df[emotions].mean())
         self.emotions_values_covid_related_terms = apply_rescaling_to_100(
