@@ -151,10 +151,7 @@ class ColorPaletteTransformer:
             opacitys.extend([opacitys[-1]] * (n - len(opacitys)))
         opacitys = opacitys[:n]
 
-        scale = [
-            self.add_opacity_to_color(color_value, o)
-            for o in opacitys
-        ]
+        scale = [self.add_opacity_to_color(color_value, o) for o in opacitys]
 
         self.color_dict.update({color_name: scale})
 
@@ -435,7 +432,7 @@ class BaseTimeSeriesChart:
         self.fig.update_layout(dict(set_values, **kwargs))
 
     def update_xaxis_configuration(self, **params):
-        for key, value in params.items():   
+        for key, value in params.items():
             self.xaxis.update({key: value})
 
     def update_yaxis_configuration(self, **params):
@@ -493,9 +490,7 @@ class BaseTimeSeriesChart:
                     line_width=0,
                 )
             )
-            xaxis_tickvals.append(
-                self.get_middle_datetime_in_year_month(year, month)
-            )
+            xaxis_tickvals.append(self.get_middle_datetime_in_year_month(year, month))
 
         self.update_xaxis_configuration(tickvals=xaxis_tickvals)
 
