@@ -2,3 +2,4 @@
 .vscode/
 issues/i001/twitter/
 issues/i001/data/
+__pycache__

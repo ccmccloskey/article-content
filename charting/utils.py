@@ -1,4 +1,3 @@
-import json
 import os
 import webbrowser
 from abc import ABC, abstractmethod

@@ -122,7 +122,7 @@ class ColorPaletteTransformer:
         for color_name in filter(
             lambda color_name: color_name in color_names, self.color_dict.keys()
         ):
-            self.color_dict[color_name] = ColorPaletteTransformer.add_opacity_to_color(
+            self.color_dict[color_name] = self.add_opacity_to_color(
                 self.color_dict[color_name], 0.1
             )
 
@@ -152,7 +152,7 @@ class ColorPaletteTransformer:
         opacitys = opacitys[:n]
 
         scale = [
-            ColorPaletteTransformer.add_opacity_to_color(color_value, o)
+            self.add_opacity_to_color(color_value, o)
             for o in opacitys
         ]
 
@@ -435,7 +435,7 @@ class BaseTimeSeriesChart:
         self.fig.update_layout(dict(set_values, **kwargs))
 
     def update_xaxis_configuration(self, **params):
-        for key, value in params.items():
+        for key, value in params.items():   
             self.xaxis.update({key: value})
 
     def update_yaxis_configuration(self, **params):
@@ -458,8 +458,8 @@ class BaseTimeSeriesChart:
         return calendar.monthrange(year, month)[1]
 
     @staticmethod
-    def get_middle_datetime_in_year_month(year, month):
-        number_of_days_in_year_month = BaseTimeSeriesChart.get_number_of_days_in_year_month(
+    def get_middle_datetime_in_year_month(self, year, month):
+        number_of_days_in_year_month = self.get_number_of_days_in_year_month(
             year, month
         )
         first, last = (
@@ -494,7 +494,7 @@ class BaseTimeSeriesChart:
                 )
             )
             xaxis_tickvals.append(
-                BaseTimeSeriesChart.get_middle_datetime_in_year_month(year, month)
+                self.get_middle_datetime_in_year_month(year, month)
             )
 
         self.update_xaxis_configuration(tickvals=xaxis_tickvals)
