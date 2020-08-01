@@ -9,6 +9,10 @@ from charting.charting import (
 from charting.utils import GetChart
 import numpy as np
 import datetime as dt
+import argparse
+
+parser = argparse.ArgumentParser(description="Show a Chart")
+parser.add_argument("--chart_id", type=str, help="chart_id of chart for the issue")
 
 
 class GetHBA(GetChart):
@@ -130,3 +134,19 @@ class GetTSB(GetChart):
                 "London (UK) Lockdown Begins",
             ),
         )
+
+
+chart_id_class_map = {
+    "hb-a": GetHBA,
+    "hb-b": GetHBB,
+    "ts-a": GetTSA,
+    "ts-b": GetTSB,
+}
+
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    chart_id = args.chart_id
+    chart_getter = chart_id_class_map[chart_id](run_mode="cli")
+    chart_getter.build_chart()
+    chart_getter.chart.show_figure()
