@@ -1,9 +1,13 @@
 import json
 import time
+import logging
 
 import pytest
 
 from issues.i001 import main
+
+
+LOGGER = logging.getLogger(__name__)
 
 
 @pytest.mark.parametrize(
@@ -37,7 +41,6 @@ def test_get_chart(issue_no, chart_id, fn):
         with open(f"tests/data/{issue_no}-{chart_id}.json") as f:
             actual_json = json.load(f)
         assert actual_json == expected_json
-        print("SUCCESS")
         chart_builder_test.remove_persisted_data()
     except AssertionError as e:
         persist_html(auto_open=True)
@@ -45,8 +48,12 @@ def test_get_chart(issue_no, chart_id, fn):
         fn(run_mode="cli").load_html_in_browser()
         result = input("Persist Changes? [Y/N]")
         if result == "Y":
-            print("SUCCESS")
             chart_builder_test.move_persisted_data(switch_run_mode="cli")
+            logging.info(
+                f"You have persisted changes to chart {issue_no}-{chart_id}. Test will pass."
+            )
         else:
-            print("FAIL")
+            logging.info(
+                f"You have NOT persisted changes to chart {issue_no}-{chart_id}. Test will fail."
+            )
             raise e

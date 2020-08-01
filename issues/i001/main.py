@@ -31,7 +31,6 @@ class GetHBA(GetChart):
             titlefont=dict(family="Roboto", size=20, color="rgb(8,48,107)")
         )
         self.chart.update_layout(showlegend=False)
-        self.chart.show_figure()
 
 
 class GetHBB(GetChart):
@@ -59,7 +58,6 @@ class GetHBB(GetChart):
             titlefont=dict(family="Roboto", size=20, color="rgb(8,48,107)")
         )
         self.chart.update_layout(showlegend=False)
-        self.chart.show_figure()
 
 
 class GetTSA(GetChart):
@@ -81,7 +79,6 @@ class GetTSA(GetChart):
         )
         self.chart.create_date_axis_configuration()
         self.chart.update_layout()
-        self.chart.show_figure()
 
 
 class GetTSB(GetChart):
@@ -133,4 +130,3 @@ class GetTSB(GetChart):
                 "London (UK) Lockdown Begins",
             ),
         )
-        self.chart.show_figure()

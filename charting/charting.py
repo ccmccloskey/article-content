@@ -454,7 +454,6 @@ class BaseTimeSeriesChart:
     def get_number_of_days_in_year_month(year, month):
         return calendar.monthrange(year, month)[1]
 
-    @staticmethod
     def get_middle_datetime_in_year_month(self, year, month):
         number_of_days_in_year_month = self.get_number_of_days_in_year_month(
             year, month
@@ -526,6 +525,9 @@ class BaseTimeSeriesChart:
 
     def save_figure_as_image(self, f, fmt="png"):
         self.fig.write_image(f, fmt)
+
+    def save_figure_as_html(self, f, auto_open):
+        plotly.offline.plot(self.fig, filename=f, auto_open=auto_open)
 
 
 class TimeSeriesEvent:
