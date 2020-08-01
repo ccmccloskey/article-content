@@ -7,14 +7,14 @@ verify_ssl = true
 flake8 = "*"
 black = "*"
 pytest = "*"
+pytest-cov = "*"
 
 [packages]
 GetOldTweets3 = "*"
 pandas = "*"
 plotly = "*"
-# remember to add sentiment analysis package here
 
-[requires]
+[requires]  
 python_version = "3.7"
 
 [pipenv]
