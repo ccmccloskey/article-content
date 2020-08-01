@@ -1,10 +1,10 @@
 import argparse
 import re
+
 import pandas as pd
 
 # change this to form sentiment import SentimentAnalysis
 from twitter.sentiment.sentiment import SentimentAnalysis
-
 
 parser = argparse.ArgumentParser(description="Run Dump Data Script")
 parser.add_argument(

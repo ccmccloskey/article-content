@@ -3,3 +3,9 @@ chart:
 
 test:
 	pytest -s --cov-report term-missing --cov=charting/ tests/
+
+check:
+	isort
+
+format:
+	black .

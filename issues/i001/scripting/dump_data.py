@@ -1,9 +1,9 @@
+import argparse
 import csv
 import datetime as dt
 import time
 
 import GetOldTweets3 as got
-import argparse
 
 parser = argparse.ArgumentParser(description="Run Dump Data Script")
 parser.add_argument(

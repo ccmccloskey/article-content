@@ -1,11 +1,10 @@
 import json
-import time
 import logging
+import time
 
 import pytest
 
 from issues.i001 import main
-
 
 LOGGER = logging.getLogger(__name__)
 

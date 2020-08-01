@@ -1,15 +1,17 @@
+import argparse
+import datetime as dt
+
+import numpy as np
+
 from charting.charting import (
     BaseTimeSeriesChart,
-    SentimentColorPalette,
-    SentimentHorizontalBarChartWithComment,
     ColorPaletteTransformer,
     DarkSentimentColorPalette,
+    SentimentColorPalette,
+    SentimentHorizontalBarChartWithComment,
     TimeSeriesEvent,
 )
 from charting.utils import GetChart
-import numpy as np
-import datetime as dt
-import argparse
 
 parser = argparse.ArgumentParser(description="Show a Chart")
 parser.add_argument("--chart_id", type=str, help="chart_id of chart for the issue")

@@ -1,9 +1,10 @@
+import datetime
 import os
 import webbrowser
 from abc import ABC, abstractmethod
 from enum import Enum
 from functools import partial
-import datetime
+
 import jsonplus as json
 
 
