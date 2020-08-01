@@ -49,11 +49,11 @@ def test_get_chart(issue_no, chart_id, fn):
         result = input("Persist Changes? [Y/N]")
         if result == "Y":
             chart_builder_test.move_persisted_data(switch_run_mode="cli")
-            logging.info(
+            LOGGER.info(
                 f"You have persisted changes to chart {issue_no}-{chart_id}. Test will pass."
             )
         else:
-            logging.info(
+            LOGGER.info(
                 f"You have NOT persisted changes to chart {issue_no}-{chart_id}. Test will fail."
             )
             raise e
