@@ -1,2 +1,2 @@
 test:
-	pytest -s tests/
+	pytest --cov-report term-missing --cov=charting/ tests/
