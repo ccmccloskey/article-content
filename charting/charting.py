@@ -1,6 +1,5 @@
 import calendar
 import datetime as dt
-import random
 from collections import OrderedDict
 from enum import Enum
 

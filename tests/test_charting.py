@@ -19,7 +19,7 @@ LOGGER = logging.getLogger(__name__)
     ],
 )
 def test_get_chart(issue_no, chart_id, fn):
-    """runs use case, asserts json 
+    """runs use case, asserts json
 
     Arguments:
         issue_no {bool} -- [description]
