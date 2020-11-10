@@ -1,0 +1,35 @@
+{
+	"hb-a": {
+		"y": [
+			"An Average Tweet",
+			"An Average COVID-19 Tweet"
+		],
+		"commments": [
+			"Trump has not got a clue, we have a true clown as leader, I am worried.",
+			"They have closed the park near to me. Our civil liberties are being slowly ripped from under us. We should be scared. Thanks COVID."
+		],
+		"data_series": [
+			{
+				"x": [
+					0.478392,
+					0.534330
+				],
+				"name": "negative"
+			},
+			{
+				"x": [
+					0.311737,
+					0.309193
+				],
+				"name": "neutral"
+			},
+			{
+				"x": [
+					0.209871,
+					0.156477
+				],
+				"name": "positive"
+			}
+		]
+    }
+}
