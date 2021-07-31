@@ -38,3 +38,5 @@ Current List of "issue_no-chart_id"'s  available:
 | i001     | hb-b     |
 | i001     | ts-a     |
 | i001     | ts-b     |
+
+Link to issue 1 - https://medium.com/@c.c.c.mccloskey/did-covid-19-make-us-all-anxious-f6523012066a
